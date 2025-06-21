@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Truck, Package, ShoppingBag, Clothes } from 'lucide-react';
+import { Truck, Package, ShoppingBag, Shirt } from 'lucide-react';
 
 const Services = () => {
   const services = [
@@ -14,7 +13,7 @@ const Services = () => {
       price: "Starting at $15"
     },
     {
-      icon: <Clothes className="w-8 h-8 text-purple-600" />,
+      icon: <Shirt className="w-8 h-8 text-purple-600" />,
       title: "Premium Laundry",
       description: "Professional care for your everyday clothing and linens",
       features: ["Eco-friendly detergents", "Gentle fabric care", "Expert stain removal"],
