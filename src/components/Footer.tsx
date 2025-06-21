@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Truck, ShoppingBag, User, House } from 'lucide-react';
+import { Truck, ShoppingBag, User, House, Package } from 'lucide-react';
 
 const Footer = () => {
   return (
