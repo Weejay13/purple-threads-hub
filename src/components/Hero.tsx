@@ -11,40 +11,43 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left">
-            {/* Handwritten tagline */}
-            <div className="font-casual text-2xl md:text-3xl text-purple-700 mb-4 text-center lg:text-left">
+            {/* Handwritten tagline - left aligned */}
+            <div className="font-casual text-2xl md:text-3xl text-purple-700 mb-4 text-left">
               do your thing while we handle the laundry hassle
             </div>
             
             <div className="flex flex-col lg:flex-row lg:items-start lg:gap-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-handwritten text-center lg:text-left">
-                <span className="text-gray-900">Premium</span>{' '}
-                <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-                  Laundry Services
-                </span>{' '}
-                <span className="text-gray-900">&</span>{' '}
-                <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-                  Home Essentials
-                </span>
-              </h1>
-              
-              {/* Mobile buttons - positioned to the right of title */}
-              <div className="lg:hidden flex flex-col gap-3 mt-4 ml-auto">
-                <Button 
-                  size="sm" 
-                  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-4 py-2 text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 font-handwritten"
-                >
-                  <Truck className="w-4 h-4 mr-1" />
-                  Book Service
-                </Button>
-                <Button 
-                  size="sm" 
-                  variant="outline" 
-                  className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-4 py-2 text-sm font-semibold font-handwritten"
-                >
-                  <ShoppingBag className="w-4 h-4 mr-1" />
-                  Shop Products
-                </Button>
+              {/* Title and mobile buttons container */}
+              <div className="flex items-start justify-between">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-left flex-1">
+                  <span className="text-gray-900">Premium</span>{' '}
+                  <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                    Laundry Services
+                  </span>{' '}
+                  <span className="text-gray-900">&</span>{' '}
+                  <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                    Home Essentials
+                  </span>
+                </h1>
+                
+                {/* Mobile buttons - positioned directly opposite the title */}
+                <div className="lg:hidden flex flex-col gap-3 ml-4 flex-shrink-0">
+                  <Button 
+                    size="sm" 
+                    className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-4 py-2 text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 font-handwritten"
+                  >
+                    <Truck className="w-4 h-4 mr-1" />
+                    Book Service
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-4 py-2 text-sm font-semibold font-handwritten"
+                  >
+                    <ShoppingBag className="w-4 h-4 mr-1" />
+                    Shop Products
+                  </Button>
+                </div>
               </div>
             </div>
             
