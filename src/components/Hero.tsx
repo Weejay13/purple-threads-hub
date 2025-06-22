@@ -18,8 +18,8 @@ const Hero = () => {
             
             <div className="flex flex-col lg:flex-row lg:items-start lg:gap-4">
               {/* Title and mobile buttons container */}
-              <div className="flex items-start justify-between">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-left flex-1">
+              <div className="relative">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-left">
                   <span className="text-gray-900">Premium</span>{' '}
                   <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
                     Laundry Services
@@ -30,21 +30,21 @@ const Hero = () => {
                   </span>
                 </h1>
                 
-                {/* Mobile buttons - positioned directly opposite the title */}
-                <div className="lg:hidden flex flex-col gap-3 ml-4 flex-shrink-0">
+                {/* Mobile buttons - positioned at specific line heights */}
+                <div className="lg:hidden absolute right-0 top-0 flex flex-col gap-2">
                   <Button 
                     size="sm" 
-                    className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-4 py-2 text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 font-handwritten"
+                    className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-3 py-1.5 text-xs font-semibold shadow-lg hover:shadow-xl transition-all duration-300 font-handwritten mt-12"
                   >
-                    <Truck className="w-4 h-4 mr-1" />
+                    <Truck className="w-3 h-3 mr-1" />
                     Book Service
                   </Button>
                   <Button 
                     size="sm" 
                     variant="outline" 
-                    className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-4 py-2 text-sm font-semibold font-handwritten"
+                    className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-3 py-1.5 text-xs font-semibold font-handwritten"
                   >
-                    <ShoppingBag className="w-4 h-4 mr-1" />
+                    <ShoppingBag className="w-3 h-3 mr-1" />
                     Shop Products
                   </Button>
                 </div>
