@@ -30,11 +30,11 @@ const Hero = () => {
                   </span>
                 </h1>
                 
-                {/* Mobile buttons - positioned at specific line heights */}
+                {/* Mobile buttons - Book Service aligned with "Laundry" line, Shop Products below */}
                 <div className="lg:hidden absolute right-0 top-0 flex flex-col gap-2">
                   <Button 
                     size="sm" 
-                    className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-3 py-1.5 text-xs font-semibold shadow-lg hover:shadow-xl transition-all duration-300 font-handwritten mt-12"
+                    className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-3 py-1.5 text-xs font-semibold shadow-lg hover:shadow-xl transition-all duration-300 font-handwritten mt-16"
                   >
                     <Truck className="w-3 h-3 mr-1" />
                     Book Service
