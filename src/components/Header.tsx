@@ -1,24 +1,23 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, User, ShoppingBag, Truck } from 'lucide-react';
+import { User, ShoppingBag, Truck } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-transparent shadow-none border-b border-gray-100 sticky top-0 z-50">
+    <header className="bg-transparent shadow-none border-none sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-12">
+        <div className="flex justify-between items-center h-10">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-xl font-bold text-gray-900 font-casual">
+            <div className="text-lg font-bold text-gray-900 font-casual">
               PureLaundry
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          {/* Desktop Navigation - hidden/invisible */}
+          <nav className="hidden md:flex items-center space-x-6 opacity-0">
             <a href="#services" className="text-gray-700 hover:text-purple-600 transition-colors font-medium font-handwritten text-sm">
               Laundry Services
             </a>
@@ -33,8 +32,8 @@ const Header = () => {
             </a>
           </nav>
 
-          {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-3">
+          {/* Desktop Actions - hidden/invisible */}
+          <div className="hidden md:flex items-center space-x-3 opacity-0">
             <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten text-xs">
               <User className="w-3 h-3 mr-1" />
               Sign In
@@ -55,16 +54,30 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile menu button - fixed spacing */}
-          <div className="md:hidden">
+          {/* Mobile header buttons */}
+          <div className="md:hidden flex items-center space-x-2">
+            <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten text-xs px-2 py-1">
+              <User className="w-3 h-3 mr-1" />
+              Sign In
+            </Button>
+            <Button size="sm" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-handwritten text-xs px-2 py-1">
+              <Truck className="w-3 h-3 mr-1" />
+              Book Service
+            </Button>
+            <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten text-xs px-2 py-1">
+              <ShoppingBag className="w-3 h-3 mr-1" />
+              Shop Products
+            </Button>
+            
+            {/* Mobile menu button with arrow-like lines */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-purple-600 transition-colors flex flex-col items-center justify-center w-6 h-6"
+              className="text-gray-600 hover:text-purple-600 transition-colors flex flex-col items-center justify-center w-6 h-6 ml-2"
             >
-              <div className="flex flex-col space-y-0.5">
-                <div className="w-4 h-0.5 bg-current"></div>
-                <div className="w-4 h-0.5 bg-current"></div>
-                <div className="w-4 h-0.5 bg-current"></div>
+              <div className="flex flex-col space-y-1">
+                <div className="w-4 h-0.5 bg-current transform rotate-12 origin-left"></div>
+                <div className="w-4 h-0.5 bg-current transform rotate-12 origin-left"></div>
+                <div className="w-4 h-0.5 bg-current transform rotate-12 origin-left"></div>
               </div>
             </button>
           </div>
