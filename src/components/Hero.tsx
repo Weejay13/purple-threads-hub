@@ -5,7 +5,7 @@ import { ShoppingBag, Truck } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-50 pt-8">
+    <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-50">
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-purple-800/5"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -13,10 +13,10 @@ const Hero = () => {
           <div className="text-center lg:text-left relative">
             {/* Mobile structured title */}
             <div className="lg:hidden">
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-left mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-left mb-2">
                 <div className="text-gray-900">Premium</div>
                 <div className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">laundry</div>
-                <div className="text-gray-900">services and</div>
+                <div className="text-gray-900">services &</div>
                 <div className="text-gray-900">home</div>
                 <div className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">essentials.</div>
               </h1>
@@ -55,8 +55,8 @@ const Hero = () => {
               </h1>
             </div>
             
-            {/* Handwritten tagline - restored position */}
-            <div className="font-casual text-2xl md:text-3xl text-purple-700 mt-6 text-left">
+            {/* Handwritten tagline - reduced spacing */}
+            <div className="font-casual text-2xl md:text-3xl text-purple-700 mt-1 text-left">
               do your thing while we handle the laundry hassle
             </div>
             
@@ -103,31 +103,25 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Horizontal sigma-shaped line for mobile */}
-            <div className="lg:hidden absolute inset-0 w-full h-full pointer-events-none">
+            {/* Sigma-shaped line for mobile */}
+            <div className="lg:hidden absolute right-0 top-8 w-full h-full pointer-events-none">
               <svg 
-                className="absolute w-full h-full" 
-                viewBox="0 0 100 100" 
+                className="absolute right-0 top-0 w-full h-64" 
+                viewBox="0 0 100 200" 
                 preserveAspectRatio="none"
               >
                 <path
-                  d="M5 25 Q30 35 50 25 Q70 15 95 25 Q70 35 50 45 Q30 55 5 45"
-                  stroke="url(#horizontalSigmaGradient)"
-                  strokeWidth="2"
+                  d="M90 40 Q50 80 10 120 Q50 160 90 200"
+                  stroke="url(#sigmaGradient)"
+                  strokeWidth="3"
                   fill="none"
                   vectorEffect="non-scaling-stroke"
-                  style={{
-                    strokeWidth: '2',
-                    filter: 'drop-shadow(0 2px 4px rgba(147, 51, 234, 0.2))'
-                  }}
                 />
                 <defs>
-                  <linearGradient id="horizontalSigmaGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#9333ea" stopOpacity="0.8" />
-                    <stop offset="25%" stopColor="#7c3aed" stopOpacity="0.9" />
-                    <stop offset="50%" stopColor="#8b5cf6" stopOpacity="1" />
-                    <stop offset="75%" stopColor="#7c3aed" stopOpacity="0.9" />
-                    <stop offset="100%" stopColor="#9333ea" stopOpacity="0.8" />
+                  <linearGradient id="sigmaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#9333ea" stopOpacity="0.6" />
+                    <stop offset="50%" stopColor="#7c3aed" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="#9333ea" stopOpacity="0.6" />
                   </linearGradient>
                 </defs>
               </svg>
