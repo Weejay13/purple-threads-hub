@@ -8,9 +8,9 @@ const Hero = () => {
     <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-50 min-h-screen">
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-purple-800/5"></div>
       
-      {/* Tagline positioned just below header */}
+      {/* Tagline positioned just below header - left aligned */}
       <div className="pt-16 px-4 sm:px-6 lg:px-8">
-        <div className="font-casual text-2xl md:text-3xl text-purple-700 text-center lg:text-left max-w-7xl mx-auto">
+        <div className="font-casual text-2xl md:text-3xl text-purple-700 text-left max-w-7xl mx-auto">
           do your thing while we handle the laundry hassle
         </div>
       </div>
