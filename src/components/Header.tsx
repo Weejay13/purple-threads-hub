@@ -1,13 +1,25 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, User, ShoppingBag, Truck } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="bg-transparent shadow-none border-b border-gray-100 sticky top-0 z-50">
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white shadow-sm' : 'bg-transparent'
+    } border-b border-gray-100`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-12">
           {/* Logo */}

@@ -7,6 +7,14 @@ const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-50 min-h-screen">
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-purple-800/5"></div>
+      
+      {/* Tagline positioned just below header */}
+      <div className="pt-16 px-4 sm:px-6 lg:px-8">
+        <div className="font-casual text-2xl md:text-3xl text-purple-700 text-center lg:text-left max-w-7xl mx-auto">
+          do your thing while we handle the laundry hassle
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -55,11 +63,6 @@ const Hero = () => {
               </h1>
             </div>
             
-            {/* Handwritten tagline */}
-            <div className="font-casual text-2xl md:text-3xl text-purple-700 mt-6 text-left">
-              do your thing while we handle the laundry hassle
-            </div>
-            
             {/* Desktop description and buttons */}
             <div className="hidden lg:block">
               <p className="text-xl text-gray-600 mt-6 leading-relaxed font-handwritten">
@@ -101,30 +104,6 @@ const Hero = () => {
                 <div className="text-2xl font-bold text-purple-600 font-casual">24hrs</div>
                 <div className="text-sm text-gray-600 font-handwritten">Turnaround</div>
               </div>
-            </div>
-
-            {/* Purple S-shaped curve for mobile */}
-            <div className="lg:hidden absolute right-0 top-8 w-full h-full pointer-events-none">
-              <svg 
-                className="absolute right-0 top-0 w-full h-96" 
-                viewBox="0 0 200 300" 
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M180 60 Q120 100 60 140 Q120 180 180 220"
-                  stroke="url(#purpleGradient)"
-                  strokeWidth="4"
-                  fill="none"
-                  vectorEffect="non-scaling-stroke"
-                />
-                <defs>
-                  <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#9333ea" stopOpacity="0.8" />
-                    <stop offset="50%" stopColor="#7c3aed" stopOpacity="1" />
-                    <stop offset="100%" stopColor="#9333ea" stopOpacity="0.8" />
-                  </linearGradient>
-                </defs>
-              </svg>
             </div>
           </div>
 
