@@ -5,62 +5,50 @@ import { ShoppingBag, Truck } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-50 min-h-screen">
+    <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-50">
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-purple-800/5"></div>
-      
-      {/* Tagline positioned just below header - left aligned */}
-      <div className="pt-16 px-4 sm:px-6 lg:px-8">
-        <div className="font-casual text-2xl md:text-3xl text-purple-700 text-left max-w-7xl mx-auto">
-          do your thing while we handle the laundry hassle
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="text-center lg:text-left relative">
-            {/* Mobile structured title */}
-            <div className="lg:hidden">
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-left mb-2">
-                <div className="text-gray-900">Premium</div>
-                <div className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">laundry</div>
-                <div className="text-gray-900">services &</div>
-                <div className="text-gray-900">home</div>
-                <div className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">essentials.</div>
-              </h1>
-              
-              {/* Mobile buttons - positioned as requested */}
-              <div className="absolute right-0 top-0 flex flex-col gap-2">
-                <Button 
-                  size="sm" 
-                  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-3 py-1.5 text-xs font-semibold shadow-lg hover:shadow-xl transition-all duration-300 font-handwritten mt-16"
-                >
-                  <Truck className="w-3 h-3 mr-1" />
-                  Book Service
-                </Button>
-                <Button 
-                  size="sm" 
-                  variant="outline" 
-                  className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-3 py-1.5 text-xs font-semibold font-handwritten"
-                >
-                  <ShoppingBag className="w-3 h-3 mr-1" />
-                  Shop Products
-                </Button>
-              </div>
+          <div className="text-center lg:text-left">
+            {/* Handwritten tagline - left aligned */}
+            <div className="font-casual text-2xl md:text-3xl text-purple-700 mb-4 text-left">
+              do your thing while we handle the laundry hassle
             </div>
-
-            {/* Desktop title */}
-            <div className="hidden lg:block">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-left">
-                <span className="text-gray-900">Premium</span>{' '}
-                <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-                  Laundry Services
-                </span>{' '}
-                <span className="text-gray-900">&</span>{' '}
-                <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-                  Home Essentials
-                </span>
-              </h1>
+            
+            <div className="flex flex-col lg:flex-row lg:items-start lg:gap-4">
+              {/* Title and mobile buttons container */}
+              <div className="relative">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-left">
+                  <span className="text-gray-900">Premium</span>{' '}
+                  <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                    Laundry Services
+                  </span>{' '}
+                  <span className="text-gray-900">&</span>{' '}
+                  <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                    Home Essentials
+                  </span>
+                </h1>
+                
+                {/* Mobile buttons - Book Service aligned with "Laundry" line, Shop Products below */}
+                <div className="lg:hidden absolute right-0 top-0 flex flex-col gap-2">
+                  <Button 
+                    size="sm" 
+                    className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-3 py-1.5 text-xs font-semibold shadow-lg hover:shadow-xl transition-all duration-300 font-handwritten mt-16"
+                  >
+                    <Truck className="w-3 h-3 mr-1" />
+                    Book Service
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-3 py-1.5 text-xs font-semibold font-handwritten"
+                  >
+                    <ShoppingBag className="w-3 h-3 mr-1" />
+                    Shop Products
+                  </Button>
+                </div>
+              </div>
             </div>
             
             {/* Desktop description and buttons */}
