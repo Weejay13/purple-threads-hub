@@ -5,9 +5,9 @@ import { ShoppingBag, Truck } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-50">
+    <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-50 min-h-screen">
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-purple-800/5"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left relative">
@@ -55,8 +55,8 @@ const Hero = () => {
               </h1>
             </div>
             
-            {/* Handwritten tagline - reduced spacing */}
-            <div className="font-casual text-2xl md:text-3xl text-purple-700 mt-1 text-left">
+            {/* Handwritten tagline */}
+            <div className="font-casual text-2xl md:text-3xl text-purple-700 mt-6 text-left">
               do your thing while we handle the laundry hassle
             </div>
             
@@ -103,25 +103,25 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Sigma-shaped line for mobile */}
+            {/* Purple S-shaped curve for mobile */}
             <div className="lg:hidden absolute right-0 top-8 w-full h-full pointer-events-none">
               <svg 
-                className="absolute right-0 top-0 w-full h-64" 
-                viewBox="0 0 100 200" 
+                className="absolute right-0 top-0 w-full h-96" 
+                viewBox="0 0 200 300" 
                 preserveAspectRatio="none"
               >
                 <path
-                  d="M90 40 Q50 80 10 120 Q50 160 90 200"
-                  stroke="url(#sigmaGradient)"
-                  strokeWidth="3"
+                  d="M180 60 Q120 100 60 140 Q120 180 180 220"
+                  stroke="url(#purpleGradient)"
+                  strokeWidth="4"
                   fill="none"
                   vectorEffect="non-scaling-stroke"
                 />
                 <defs>
-                  <linearGradient id="sigmaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#9333ea" stopOpacity="0.6" />
-                    <stop offset="50%" stopColor="#7c3aed" stopOpacity="0.8" />
-                    <stop offset="100%" stopColor="#9333ea" stopOpacity="0.6" />
+                  <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#9333ea" stopOpacity="0.8" />
+                    <stop offset="50%" stopColor="#7c3aed" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#9333ea" stopOpacity="0.8" />
                   </linearGradient>
                 </defs>
               </svg>
