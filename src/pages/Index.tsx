@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -7,6 +6,8 @@ import FeaturedProducts from '@/components/FeaturedProducts';
 import Testimonials from '@/components/Testimonials';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import PointsRewards from '@/components/PointsRewards';
+import EmpowerMothers from '@/components/EmpowerMothers';
 
 const Index = () => {
   return (
@@ -15,6 +16,8 @@ const Index = () => {
       <Hero />
       <Services />
       <HowItWorks />
+      <PointsRewards />
+      <EmpowerMothers />
       <FeaturedProducts />
       <Testimonials />
       <Footer />

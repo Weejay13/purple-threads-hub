@@ -2,90 +2,91 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ShoppingBag, Tag } from 'lucide-react';
+import { ArrowRight, ShoppingBag, Tag, Zap, Sparkles } from 'lucide-react';
 
 const FeaturedProducts = () => {
-  const products = [
+  const productSections = [
     {
-      name: "Premium Cotton Bedsheet Set",
-      price: "$89.99",
-      originalPrice: "$120.00",
-      image: "bg-gradient-to-br from-blue-100 to-blue-200",
-      badge: "Best Seller"
+      title: "Flash Sale",
+      icon: <Zap className="w-5 h-5 text-orange-500" />,
+      products: [
+        { name: "Cotton Bedsheet Set", price: "$49.99", originalPrice: "$89.99", image: "bg-gradient-to-br from-blue-100 to-blue-200" },
+        { name: "Bath Towel Bundle", price: "$25.99", originalPrice: "$45.99", image: "bg-gradient-to-br from-green-100 to-green-200" },
+        { name: "Pillow Pair", price: "$19.99", originalPrice: "$29.99", image: "bg-gradient-to-br from-purple-100 to-purple-200" }
+      ]
     },
     {
-      name: "Luxury Bath Towel Collection",
-      price: "$45.99",
-      originalPrice: "$65.00",
-      image: "bg-gradient-to-br from-purple-100 to-purple-200",
-      badge: "New Arrival"
+      title: "What's New",
+      icon: <Sparkles className="w-5 h-5 text-purple-500" />,
+      products: [
+        { name: "Organic Cotton Sheets", price: "$119.99", originalPrice: "", image: "bg-gradient-to-br from-teal-100 to-teal-200" },
+        { name: "Bamboo Towel Set", price: "$69.99", originalPrice: "", image: "bg-gradient-to-br from-amber-100 to-amber-200" },
+        { name: "Memory Foam Pillow", price: "$39.99", originalPrice: "", image: "bg-gradient-to-br from-rose-100 to-rose-200" }
+      ]
     },
     {
-      name: "Organic Cotton Pillows",
-      price: "$29.99",
-      originalPrice: "$40.00",
-      image: "bg-gradient-to-br from-green-100 to-green-200",
-      badge: "Eco-Friendly"
-    },
-    {
-      name: "Designer Comforter Set",
-      price: "$159.99",
-      originalPrice: "$200.00",
-      image: "bg-gradient-to-br from-pink-100 to-pink-200",
-      badge: "Premium"
+      title: "Exclusive",
+      icon: <Tag className="w-5 h-5 text-gold-500" />,
+      products: [
+        { name: "Luxury Silk Sheets", price: "$299.99", originalPrice: "", image: "bg-gradient-to-br from-indigo-100 to-indigo-200" },
+        { name: "Designer Comforter", price: "$199.99", originalPrice: "", image: "bg-gradient-to-br from-pink-100 to-pink-200" },
+        { name: "Premium Mattress Pad", price: "$89.99", originalPrice: "", image: "bg-gradient-to-br from-cyan-100 to-cyan-200" }
+      ]
     }
   ];
 
   return (
-    <section id="shop" className="py-20 bg-white">
+    <section id="shop" className="py-20 bg-gradient-to-br from-purple-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-handwritten">
             Featured <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">Products</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-handwritten">
             Discover our curated selection of premium home essentials from trusted partner retailers
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product, index) => (
-            <Card key={index} className="border-2 border-gray-100 hover:border-purple-300 transition-all duration-300 hover:shadow-lg group overflow-hidden">
-              <div className="relative">
-                <div className={`aspect-square ${product.image} relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-medium">
-                      {product.badge}
-                    </span>
-                  </div>
-                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button size="sm" variant="outline" className="bg-white/90 backdrop-blur-sm border-white">
-                      <ShoppingBag className="w-4 h-4" />
-                    </Button>
-                  </div>
+        {/* Mobile: Vertical layout, Desktop: Horizontal layout */}
+        <div className="space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
+          {productSections.map((section, sectionIndex) => (
+            <div key={sectionIndex} className="space-y-6">
+              {/* Section Header */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  {section.icon}
+                  <h3 className="text-2xl font-bold text-gray-900 font-handwritten">{section.title}</h3>
                 </div>
-              </div>
-              
-              <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
-                  {product.name}
-                </h3>
-                
-                <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-xl font-bold text-purple-600">{product.price}</span>
-                  <span className="text-sm text-gray-500 line-through">{product.originalPrice}</span>
-                  <div className="flex items-center text-green-600 text-sm">
-                    <Tag className="w-3 h-3 mr-1" />
-                    <span className="font-medium">Save</span>
-                  </div>
-                </div>
-                
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white">
-                  Add to Cart
+                <Button variant="ghost" size="sm" className="text-purple-600 hover:text-purple-700 font-handwritten">
+                  View More <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+
+              {/* Products Grid */}
+              <div className="space-y-4">
+                {section.products.map((product, productIndex) => (
+                  <Card key={productIndex} className="border border-gray-200 hover:border-purple-300 transition-all duration-300 hover:shadow-md">
+                    <CardContent className="p-4">
+                      <div className="flex items-center space-x-4">
+                        <div className={`w-16 h-16 ${product.image} rounded-lg flex-shrink-0`}></div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="text-sm font-semibold text-gray-900 font-handwritten truncate">{product.name}</h4>
+                          <div className="flex items-center space-x-2 mt-1">
+                            <span className="text-lg font-bold text-purple-600 font-casual">{product.price}</span>
+                            {product.originalPrice && (
+                              <span className="text-sm text-gray-500 line-through font-handwritten">{product.originalPrice}</span>
+                            )}
+                          </div>
+                        </div>
+                        <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white">
+                          <ShoppingBag className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
 
@@ -93,7 +94,7 @@ const FeaturedProducts = () => {
           <Button 
             size="lg" 
             variant="outline" 
-            className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-8"
+            className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-8 font-handwritten"
           >
             View All Products
           </Button>
