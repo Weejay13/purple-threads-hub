@@ -6,8 +6,11 @@ import { ShoppingBag, Truck } from 'lucide-react';
 const Hero = () => {
   return (
     <section className="relative overflow-hidden min-h-screen">
-      {/* Mobile background image */}
-      <div className="md:hidden absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/lovable-uploads/b1ae4daf-c91b-4ebe-a595-91f7531596f0.png)' }}>
+      {/* Mobile background image - only covers from trust indicators upwards */}
+      <div className="md:hidden absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ 
+        backgroundImage: 'url(/lovable-uploads/b1ae4daf-c91b-4ebe-a595-91f7531596f0.png)',
+        bottom: '20%' // This will make the background stop before the trust indicators
+      }}>
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
       
@@ -98,19 +101,19 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="flex items-center justify-center lg:justify-start space-x-8 mt-12">
+            {/* Trust Indicators - these will be outside the background area */}
+            <div className="flex items-center justify-center lg:justify-start space-x-8 mt-12 relative z-20">
               <div className="text-center">
-                <div className="text-2xl font-bold text-white md:text-purple-600 font-casual">500+</div>
-                <div className="text-sm text-white md:text-gray-600 font-handwritten">Trusted Cleaners</div>
+                <div className="text-2xl font-bold text-gray-900 md:text-purple-600 font-casual">500+</div>
+                <div className="text-sm text-gray-700 md:text-gray-600 font-handwritten">Trusted Cleaners</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white md:text-purple-600 font-casual">10k+</div>
-                <div className="text-sm text-white md:text-gray-600 font-handwritten">Happy Students</div>
+                <div className="text-2xl font-bold text-gray-900 md:text-purple-600 font-casual">10k+</div>
+                <div className="text-sm text-gray-700 md:text-gray-600 font-handwritten">Happy Students</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white md:text-purple-600 font-casual">24hrs</div>
-                <div className="text-sm text-white md:text-gray-600 font-handwritten">Turnaround</div>
+                <div className="text-2xl font-bold text-gray-900 md:text-purple-600 font-casual">24hrs</div>
+                <div className="text-sm text-gray-700 md:text-gray-600 font-handwritten">Turnaround</div>
               </div>
             </div>
           </div>
@@ -143,6 +146,14 @@ const Hero = () => {
                   <div className="text-xs text-gray-600 font-handwritten">Student Rating</div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Mobile floating card - restored outside background area */}
+          <div className="lg:hidden absolute top-20 right-4 bg-white rounded-xl shadow-lg p-3 border border-purple-100 z-30">
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="text-xs font-medium text-gray-900 font-handwritten">Available Now</span>
             </div>
           </div>
         </div>

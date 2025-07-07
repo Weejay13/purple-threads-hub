@@ -67,30 +67,30 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Actions - Show buttons first, then menu */}
-          <div className="md:hidden flex items-center space-x-2">
-            <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten text-xs px-2">
-              <User className="w-3 h-3 mr-1" />
+          {/* Mobile Actions - Reduced sizes */}
+          <div className="md:hidden flex items-center space-x-1">
+            <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten px-1.5 py-1 text-xs h-7">
+              <User className="w-2.5 h-2.5 mr-0.5" />
               Sign In
             </Button>
-            <Button size="sm" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-handwritten text-xs px-2">
-              <Truck className="w-3 h-3 mr-1" />
+            <Button size="sm" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-handwritten px-1.5 py-1 text-xs h-7">
+              <Truck className="w-2.5 h-2.5 mr-0.5" />
               Book Service
             </Button>
-            <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten text-xs px-2">
-              <ShoppingBag className="w-3 h-3 mr-1" />
+            <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten px-1.5 py-1 text-xs h-7">
+              <ShoppingBag className="w-2.5 h-2.5 mr-0.5" />
               Shop Products
             </Button>
             
-            {/* Mobile menu button with three lines */}
+            {/* Mobile menu button with three lines - reduced size */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-purple-600 transition-colors p-1"
+              className="text-gray-600 hover:text-purple-600 transition-colors p-0.5"
             >
               {isMenuOpen ? (
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               ) : (
-                <Menu className="w-5 h-5" />
+                <Menu className="w-4 h-4" />
               )}
             </button>
           </div>

@@ -12,27 +12,27 @@ const FeaturedProducts = () => {
       title: "Flash Sale",
       icon: <Zap className="w-5 h-5 text-orange-500" />,
       products: [
-        { name: "Cotton Bedsheet Set", price: "$49.99", originalPrice: "$89.99", image: "bg-gradient-to-br from-blue-100 to-blue-200" },
-        { name: "Bath Towel Bundle", price: "$25.99", originalPrice: "$45.99", image: "bg-gradient-to-br from-green-100 to-green-200" },
-        { name: "Pillow Pair", price: "$19.99", originalPrice: "$29.99", image: "bg-gradient-to-br from-purple-100 to-purple-200" }
+        { name: "Cotton Bedsheet Set", price: "$49.99", originalPrice: "$89.99", image: "bg-gradient-to-br from-blue-100 to-blue-200", description: "Soft and comfortable cotton bedsheets" },
+        { name: "Bath Towel Bundle", price: "$25.99", originalPrice: "$45.99", image: "bg-gradient-to-br from-green-100 to-green-200", description: "Absorbent and plush towel set" },
+        { name: "Pillow Pair", price: "$19.99", originalPrice: "$29.99", image: "bg-gradient-to-br from-purple-100 to-purple-200", description: "Memory foam comfort pillows" }
       ]
     },
     {
       title: "What's New",
       icon: <Sparkles className="w-5 h-5 text-purple-500" />,
       products: [
-        { name: "Organic Cotton Sheets", price: "$119.99", originalPrice: "", image: "bg-gradient-to-br from-teal-100 to-teal-200" },
-        { name: "Bamboo Towel Set", price: "$69.99", originalPrice: "", image: "bg-gradient-to-br from-amber-100 to-amber-200" },
-        { name: "Memory Foam Pillow", price: "$39.99", originalPrice: "", image: "bg-gradient-to-br from-rose-100 to-rose-200" }
+        { name: "Organic Cotton Sheets", price: "$119.99", originalPrice: "", image: "bg-gradient-to-br from-teal-100 to-teal-200", description: "Eco-friendly organic cotton" },
+        { name: "Bamboo Towel Set", price: "$69.99", originalPrice: "", image: "bg-gradient-to-br from-amber-100 to-amber-200", description: "Sustainable bamboo fiber towels" },
+        { name: "Memory Foam Pillow", price: "$39.99", originalPrice: "", image: "bg-gradient-to-br from-rose-100 to-rose-200", description: "Orthopedic support pillow" }
       ]
     },
     {
       title: "Exclusive",
       icon: <Tag className="w-5 h-5 text-gold-500" />,
       products: [
-        { name: "Luxury Silk Sheets", price: "$299.99", originalPrice: "", image: "bg-gradient-to-br from-indigo-100 to-indigo-200" },
-        { name: "Designer Comforter", price: "$199.99", originalPrice: "", image: "bg-gradient-to-br from-pink-100 to-pink-200" },
-        { name: "Premium Mattress Pad", price: "$89.99", originalPrice: "", image: "bg-gradient-to-br from-cyan-100 to-cyan-200" }
+        { name: "Luxury Silk Sheets", price: "$299.99", originalPrice: "", image: "bg-gradient-to-br from-indigo-100 to-indigo-200", description: "Premium mulberry silk sheets" },
+        { name: "Designer Comforter", price: "$199.99", originalPrice: "", image: "bg-gradient-to-br from-pink-100 to-pink-200", description: "Luxury designer comforter set" },
+        { name: "Premium Mattress Pad", price: "$89.99", originalPrice: "", image: "bg-gradient-to-br from-cyan-100 to-cyan-200", description: "Temperature regulating pad" }
       ]
     }
   ];
@@ -91,19 +91,22 @@ const FeaturedProducts = () => {
                     <CardContent className="p-4">
                       <div className="flex items-center space-x-4">
                         <div className={`w-16 h-16 ${product.image} rounded-lg flex-shrink-0`}></div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-semibold text-gray-900 font-handwritten truncate">{product.name}</h4>
-                          <div className="flex items-center space-x-2 mt-1 mb-2">
-                            <span className="text-lg font-bold text-purple-600 font-casual">{product.price}</span>
-                            {product.originalPrice && (
-                              <span className="text-sm text-gray-500 line-through font-handwritten">{product.originalPrice}</span>
-                            )}
+                        <div className="flex-1 min-w-0 flex justify-between items-center">
+                          <div className="flex-1">
+                            <h4 className="text-sm font-semibold text-gray-900 font-handwritten truncate">{product.name}</h4>
+                            <p className="text-xs text-gray-600 font-handwritten mt-1">{product.description}</p>
+                            <div className="flex items-center space-x-2 mt-2">
+                              <span className="text-lg font-bold text-purple-600 font-casual">{product.price}</span>
+                              {product.originalPrice && (
+                                <span className="text-sm text-gray-500 line-through font-handwritten">{product.originalPrice}</span>
+                              )}
+                            </div>
                           </div>
-                          <div className="flex space-x-2">
-                            <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white text-xs px-2 py-1">
+                          <div className="flex flex-col space-y-1 ml-2">
+                            <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white text-xs px-2 py-1 h-6">
                               Buy Now
                             </Button>
-                            <Button size="sm" variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50 text-xs px-2 py-1">
+                            <Button size="sm" variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50 text-xs px-2 py-1 h-6">
                               Add To Cart
                             </Button>
                           </div>
