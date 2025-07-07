@@ -75,7 +75,13 @@ const Services = () => {
                 <div className="text-4xl mb-3">{service.icon}</div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2 font-handwritten">{service.title}</h3>
                 <p className="text-sm text-gray-600 mb-2 font-handwritten">{service.description}</p>
-                <p className="text-xs text-gray-500 font-handwritten">{service.detail}</p>
+                {/* <p className="text-xs text-gray-500 font-handwritten">{service.detail}</p> */}
+                <Button 
+                  size="sm" 
+                  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white mt-2 font-handwritten"
+                >
+                  Book Service
+                </Button>
               </CardContent>
             </Card>
           ))}

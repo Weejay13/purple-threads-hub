@@ -1,31 +1,40 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ShoppingBag, Truck } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-50 min-h-screen">
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-purple-800/5"></div>
+    <section className="relative overflow-hidden min-h-screen">
+      {/* Mobile background image */}
+      <div className="md:hidden absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/lovable-uploads/b1ae4daf-c91b-4ebe-a595-91f7531596f0.png)' }}>
+        <div className="absolute inset-0 bg-black/40"></div>
+      </div>
+      
+      {/* Desktop background */}
+      <div className="hidden md:block absolute inset-0 bg-gradient-to-br from-purple-50 via-white to-purple-50">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-purple-800/5"></div>
+      </div>
       
       {/* Tagline positioned just below header - left aligned */}
-      <div className="pt-16 px-4 sm:px-6 lg:px-8">
-        <div className="font-casual text-2xl md:text-3xl text-purple-700 text-left max-w-7xl mx-auto">
+      <div className="relative z-10 pt-16 px-4 sm:px-6 lg:px-8">
+        <div className="font-casual text-2xl md:text-3xl text-white md:text-purple-700 text-left max-w-7xl mx-auto">
           do your thing while we handle the laundry hassle
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left relative">
             {/* Mobile structured title */}
             <div className="lg:hidden">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight text-left mb-2">
-                <div className="text-gray-900">Premium</div>
-                <div className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">laundry</div>
-                <div className="text-gray-900">services &</div>
-                <div className="text-gray-900">home</div>
-                <div className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">essentials.</div>
+                <div className="text-white">Premium</div>
+                <div className="text-white">laundry</div>
+                <div className="text-white">services &</div>
+                <div className="text-white">home</div>
+                <div className="text-white">essentials.</div>
               </h1>
               
               {/* Mobile buttons - positioned as requested */}
@@ -40,7 +49,7 @@ const Hero = () => {
                 <Button 
                   size="sm" 
                   variant="outline" 
-                  className="border-2 border-purple-200 text-purple-700 hover:bg-purple-50 px-3 py-1.5 text-xs font-semibold font-handwritten"
+                  className="border-2 border-white text-white hover:bg-white hover:text-purple-700 px-3 py-1.5 text-xs font-semibold font-handwritten"
                 >
                   <ShoppingBag className="w-3 h-3 mr-1" />
                   Shop Products
@@ -92,22 +101,22 @@ const Hero = () => {
             {/* Trust Indicators */}
             <div className="flex items-center justify-center lg:justify-start space-x-8 mt-12">
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600 font-casual">500+</div>
-                <div className="text-sm text-gray-600 font-handwritten">Trusted Cleaners</div>
+                <div className="text-2xl font-bold text-white md:text-purple-600 font-casual">500+</div>
+                <div className="text-sm text-white md:text-gray-600 font-handwritten">Trusted Cleaners</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600 font-casual">10k+</div>
-                <div className="text-sm text-gray-600 font-handwritten">Happy Students</div>
+                <div className="text-2xl font-bold text-white md:text-purple-600 font-casual">10k+</div>
+                <div className="text-sm text-white md:text-gray-600 font-handwritten">Happy Students</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600 font-casual">24hrs</div>
-                <div className="text-sm text-gray-600 font-handwritten">Turnaround</div>
+                <div className="text-2xl font-bold text-white md:text-purple-600 font-casual">24hrs</div>
+                <div className="text-sm text-white md:text-gray-600 font-handwritten">Turnaround</div>
               </div>
             </div>
           </div>
 
-          {/* Right Content - Image Placeholder */}
-          <div className="relative">
+          {/* Right Content - Image Placeholder (Desktop only) */}
+          <div className="relative hidden lg:block">
             <div className="aspect-square bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl shadow-2xl relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent"></div>
               <div className="absolute bottom-8 left-8 right-8">

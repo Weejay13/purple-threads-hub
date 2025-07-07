@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, User, ShoppingBag, Truck } from 'lucide-react';
+import { Menu, User, ShoppingBag, Truck, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -67,17 +67,31 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile menu button - fixed spacing */}
-          <div className="md:hidden">
+          {/* Mobile Actions - Show buttons first, then menu */}
+          <div className="md:hidden flex items-center space-x-2">
+            <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten text-xs px-2">
+              <User className="w-3 h-3 mr-1" />
+              Sign In
+            </Button>
+            <Button size="sm" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-handwritten text-xs px-2">
+              <Truck className="w-3 h-3 mr-1" />
+              Book Service
+            </Button>
+            <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten text-xs px-2">
+              <ShoppingBag className="w-3 h-3 mr-1" />
+              Shop Products
+            </Button>
+            
+            {/* Mobile menu button with three lines */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-purple-600 transition-colors flex flex-col items-center justify-center w-6 h-6"
+              className="text-gray-600 hover:text-purple-600 transition-colors p-1"
             >
-              <div className="flex flex-col space-y-0.5">
-                <div className="w-4 h-0.5 bg-current"></div>
-                <div className="w-4 h-0.5 bg-current"></div>
-                <div className="w-4 h-0.5 bg-current"></div>
-              </div>
+              {isMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
@@ -98,20 +112,6 @@ const Header = () => {
               <a href="#about" className="text-gray-700 hover:text-purple-600 transition-colors font-medium font-handwritten text-sm">
                 About
               </a>
-              <div className="flex flex-col space-y-2 pt-3">
-                <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten text-xs">
-                  <User className="w-3 h-3 mr-1" />
-                  Sign In
-                </Button>
-                <Button size="sm" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-handwritten text-xs">
-                  <Truck className="w-3 h-3 mr-1" />
-                  Book Service
-                </Button>
-                <Button variant="outline" size="sm" className="border-purple-200 text-purple-600 hover:bg-purple-50 font-handwritten text-xs">
-                  <ShoppingBag className="w-3 h-3 mr-1" />
-                  Shop Products
-                </Button>
-              </div>
             </div>
           </div>
         )}

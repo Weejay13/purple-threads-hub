@@ -1,10 +1,12 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ShoppingBag, Tag, Zap, Sparkles } from 'lucide-react';
+import { ArrowRight, Tag, Zap, Sparkles } from 'lucide-react';
 
 const FeaturedProducts = () => {
+  const [animatingSection, setAnimatingSection] = useState<number | null>(null);
+
   const productSections = [
     {
       title: "Flash Sale",
@@ -35,6 +37,11 @@ const FeaturedProducts = () => {
     }
   ];
 
+  const triggerAnimation = (sectionIndex: number) => {
+    setAnimatingSection(sectionIndex);
+    setTimeout(() => setAnimatingSection(null), 1000);
+  };
+
   return (
     <section id="shop" className="py-20 bg-gradient-to-br from-purple-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,30 +64,50 @@ const FeaturedProducts = () => {
                   {section.icon}
                   <h3 className="text-2xl font-bold text-gray-900 font-handwritten">{section.title}</h3>
                 </div>
-                <Button variant="ghost" size="sm" className="text-purple-600 hover:text-purple-700 font-handwritten">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-purple-600 hover:text-purple-700 font-handwritten"
+                  onClick={() => triggerAnimation(sectionIndex)}
+                >
                   View More <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
 
               {/* Products Grid */}
-              <div className="space-y-4">
+              <div className="space-y-4 overflow-hidden">
                 {section.products.map((product, productIndex) => (
-                  <Card key={productIndex} className="border border-gray-200 hover:border-purple-300 transition-all duration-300 hover:shadow-md">
+                  <Card 
+                    key={productIndex} 
+                    className={`border border-gray-200 hover:border-purple-300 transition-all duration-300 hover:shadow-md ${
+                      animatingSection === sectionIndex 
+                        ? 'animate-slide-out-right opacity-0' 
+                        : 'animate-slide-in-right'
+                    }`}
+                    style={{
+                      animationDelay: animatingSection === sectionIndex ? '0ms' : `${productIndex * 100}ms`
+                    }}
+                  >
                     <CardContent className="p-4">
                       <div className="flex items-center space-x-4">
                         <div className={`w-16 h-16 ${product.image} rounded-lg flex-shrink-0`}></div>
                         <div className="flex-1 min-w-0">
                           <h4 className="text-sm font-semibold text-gray-900 font-handwritten truncate">{product.name}</h4>
-                          <div className="flex items-center space-x-2 mt-1">
+                          <div className="flex items-center space-x-2 mt-1 mb-2">
                             <span className="text-lg font-bold text-purple-600 font-casual">{product.price}</span>
                             {product.originalPrice && (
                               <span className="text-sm text-gray-500 line-through font-handwritten">{product.originalPrice}</span>
                             )}
                           </div>
+                          <div className="flex space-x-2">
+                            <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white text-xs px-2 py-1">
+                              Buy Now
+                            </Button>
+                            <Button size="sm" variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50 text-xs px-2 py-1">
+                              Add To Cart
+                            </Button>
+                          </div>
                         </div>
-                        <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white">
-                          <ShoppingBag className="w-4 h-4" />
-                        </Button>
                       </div>
                     </CardContent>
                   </Card>
