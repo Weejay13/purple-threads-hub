@@ -1,45 +1,59 @@
-
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Tag, Zap, Sparkles } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
+
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image_url: string;
+  stock_quantity: number;
+  category: string;
+  is_active: boolean;
+}
 
 const FeaturedProducts = () => {
-  const [animatingSection, setAnimatingSection] = useState<number | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
 
-  const productSections = [
-    {
-      title: "Flash Sale",
-      icon: <Zap className="w-5 h-5 text-orange-500" />,
-      products: [
-        { name: "Cotton Bedsheet Set", price: "$49.99", originalPrice: "$89.99", image: "bg-gradient-to-br from-blue-100 to-blue-200", description: "Soft and comfortable cotton bedsheets" },
-        { name: "Bath Towel Bundle", price: "$25.99", originalPrice: "$45.99", image: "bg-gradient-to-br from-green-100 to-green-200", description: "Absorbent and plush towel set" },
-        { name: "Pillow Pair", price: "$19.99", originalPrice: "$29.99", image: "bg-gradient-to-br from-purple-100 to-purple-200", description: "Memory foam comfort pillows" }
-      ]
-    },
-    {
-      title: "What's New",
-      icon: <Sparkles className="w-5 h-5 text-purple-500" />,
-      products: [
-        { name: "Organic Cotton Sheets", price: "$119.99", originalPrice: "", image: "bg-gradient-to-br from-teal-100 to-teal-200", description: "Eco-friendly organic cotton" },
-        { name: "Bamboo Towel Set", price: "$69.99", originalPrice: "", image: "bg-gradient-to-br from-amber-100 to-amber-200", description: "Sustainable bamboo fiber towels" },
-        { name: "Memory Foam Pillow", price: "$39.99", originalPrice: "", image: "bg-gradient-to-br from-rose-100 to-rose-200", description: "Orthopedic support pillow" }
-      ]
-    },
-    {
-      title: "Exclusive",
-      icon: <Tag className="w-5 h-5 text-gold-500" />,
-      products: [
-        { name: "Luxury Silk Sheets", price: "$299.99", originalPrice: "", image: "bg-gradient-to-br from-indigo-100 to-indigo-200", description: "Premium mulberry silk sheets" },
-        { name: "Designer Comforter", price: "$199.99", originalPrice: "", image: "bg-gradient-to-br from-pink-100 to-pink-200", description: "Luxury designer comforter set" },
-        { name: "Premium Mattress Pad", price: "$89.99", originalPrice: "", image: "bg-gradient-to-br from-cyan-100 to-cyan-200", description: "Temperature regulating pad" }
-      ]
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('is_active', true)
+        .limit(4);
+
+      if (error) throw error;
+      setProducts(data || []);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    } finally {
+      setIsLoading(false);
     }
-  ];
+  };
 
-  const triggerAnimation = (sectionIndex: number) => {
-    setAnimatingSection(sectionIndex);
-    setTimeout(() => setAnimatingSection(null), 1000);
+  const handleAddToCart = (product: Product) => {
+    toast({
+      title: "Added to cart",
+      description: `${product.name} has been added to your cart.`,
+    });
+  };
+
+  const handleBuyNow = (product: Product) => {
+    toast({
+      title: "Buy now",
+      description: `Redirecting to checkout for ${product.name}.`,
+    });
   };
 
   return (
@@ -50,75 +64,61 @@ const FeaturedProducts = () => {
             Featured <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">Products</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto font-handwritten">
-            Discover our curated selection of premium home essentials from trusted partner retailers
+            Premium laundry products to keep your clothes looking their best
           </p>
         </div>
 
-        {/* Mobile: Vertical layout, Desktop: Horizontal layout */}
-        <div className="space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
-          {productSections.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="space-y-6">
-              {/* Section Header */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  {section.icon}
-                  <h3 className="text-2xl font-bold text-gray-900 font-handwritten">{section.title}</h3>
-                </div>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="text-purple-600 hover:text-purple-700 font-handwritten"
-                  onClick={() => triggerAnimation(sectionIndex)}
-                >
-                  View More <ArrowRight className="w-4 h-4 ml-1" />
-                </Button>
-              </div>
-
-              {/* Products Grid */}
-              <div className="space-y-4 overflow-hidden">
-                {section.products.map((product, productIndex) => (
-                  <Card 
-                    key={productIndex} 
-                    className={`border border-gray-200 hover:border-purple-300 transition-all duration-300 hover:shadow-md ${
-                      animatingSection === sectionIndex 
-                        ? 'animate-slide-out-right opacity-0' 
-                        : 'animate-slide-in-right'
-                    }`}
-                    style={{
-                      animationDelay: animatingSection === sectionIndex ? '0ms' : `${productIndex * 100}ms`
-                    }}
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex items-center space-x-4">
-                        <div className={`w-16 h-16 ${product.image} rounded-lg flex-shrink-0`}></div>
-                        <div className="flex-1 min-w-0 flex justify-between items-center">
-                          <div className="flex-1">
-                            <h4 className="text-sm font-semibold text-gray-900 font-handwritten truncate">{product.name}</h4>
-                            <p className="text-xs text-gray-600 font-handwritten mt-1">{product.description}</p>
-                            <div className="flex items-center space-x-2 mt-2">
-                              <span className="text-lg font-bold text-purple-600 font-casual">{product.price}</span>
-                              {product.originalPrice && (
-                                <span className="text-sm text-gray-500 line-through font-handwritten">{product.originalPrice}</span>
-                              )}
-                            </div>
-                          </div>
-                          <div className="flex flex-col space-y-1 ml-2">
-                            <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white text-xs px-2 py-1 h-6">
-                              Buy Now
-                            </Button>
-                            <Button size="sm" variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50 text-xs px-2 py-1 h-6">
-                              Add To Cart
-                            </Button>
-                          </div>
-                        </div>
+        {isLoading ? (
+          <div className="text-center py-8">
+            <p>Loading products...</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {products.map((product) => (
+              <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <CardContent className="p-0">
+                  <div className="relative">
+                    <img
+                      src={product.image_url || "/placeholder.svg"}
+                      alt={product.name}
+                      className="w-full h-48 object-cover"
+                    />
+                    <Badge className="absolute top-3 right-3 bg-purple-600 text-white">
+                      {product.category}
+                    </Badge>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-semibold text-gray-900 text-sm font-handwritten">{product.name}</h3>
+                      <div className="flex flex-col gap-1">
+                        <Button 
+                          size="sm" 
+                          className="bg-purple-600 hover:bg-purple-700 text-white text-xs h-6"
+                          onClick={() => handleBuyNow(product)}
+                        >
+                          Buy Now
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="border-purple-200 text-purple-600 hover:bg-purple-50 text-xs h-6"
+                          onClick={() => handleAddToCart(product)}
+                        >
+                          Add To Cart
+                        </Button>
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+                    </div>
+                    <p className="text-gray-600 text-xs mb-3">{product.description}</p>
+                    <div className="flex justify-between items-center">
+                      <span className="text-lg font-bold text-purple-600">${product.price}</span>
+                      <span className="text-xs text-gray-500">Stock: {product.stock_quantity}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
 
         <div className="text-center mt-12">
           <Button 
