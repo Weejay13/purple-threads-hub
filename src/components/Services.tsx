@@ -1,62 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Clock, Truck, Sparkles, Shield } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
-import { useToast } from '@/hooks/use-toast';
 
-interface Service {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  duration_hours: number;
-  image_url: string;
-  is_active: boolean;
-}
+import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 const Services = () => {
-  const [services, setServices] = useState<Service[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const { toast } = useToast();
-
-  useEffect(() => {
-    fetchServices();
-  }, []);
-
-  const fetchServices = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('services')
-        .select('*')
-        .eq('is_active', true)
-        .order('price', { ascending: true });
-
-      if (error) throw error;
-      setServices(data || []);
-    } catch (error) {
-      console.error('Error fetching services:', error);
-    } finally {
-      setIsLoading(false);
+  const services = [
+    {
+      icon: "👔",
+      title: "Dry cleaning",
+      description: "Professional care for delicate fabrics.",
+      detail: "Expert cleaning preserves your garments' quality and extends their lifespan."
+    },
+    {
+      icon: "👔",
+      title: "Shirt Laundry", 
+      description: "Fresh, crisp shirts ready to wear.",
+      detail: "Professional pressing ensures a polished, professional appearance every time."
+    },
+    {
+      icon: "👕",
+      title: "Wash & fold laundry",
+      description: "Convenient wash and fold service.",
+      detail: "Your clothes are washed, dried, and neatly folded with care and attention."
+    },
+    {
+      icon: "🧺",
+      title: "Household items",
+      description: "Complete care for bedding and linens.",
+      detail: "From comforters to curtains, we handle all your household textile needs."
+    },
+    {
+      icon: "👗",
+      title: "Wedding Dresses",
+      description: "Specialized care for precious gowns.",
+      detail: "Delicate handling and expert cleaning preserve your most treasured garments."
+    },
+    {
+      icon: "🧥",
+      title: "Outerwear",
+      description: "Professional cleaning for coats and jackets.",
+      detail: "Specialized techniques maintain the integrity of leather, wool, and technical fabrics."
+    },
+    {
+      icon: "✂️",
+      title: "Alterations",
+      description: "Expert tailoring and repairs.",
+      detail: "Professional alterations ensure the perfect fit for all your garments."
+    },
+    {
+      icon: "👠",
+      title: "Shoes",
+      description: "Professional shoe cleaning and care.",
+      detail: "Restore and maintain your footwear with specialized cleaning and conditioning."
     }
-  };
-
-  const handleBookService = (service: Service) => {
-    toast({
-      title: "Service booking",
-      description: `Redirecting to book ${service.name} service.`,
-    });
-  };
-
-  const getServiceIcon = (index: number) => {
-    const icons = [
-      <Sparkles className="h-8 w-8 text-purple-600" />,
-      <Shield className="h-8 w-8 text-purple-600" />,
-      <Clock className="h-8 w-8 text-purple-600" />,
-      <Truck className="h-8 w-8 text-purple-600" />
-    ];
-    return icons[index % icons.length];
-  };
+  ];
 
   return (
     <section id="services" className="py-20 bg-white">
@@ -70,45 +67,25 @@ const Services = () => {
           </p>
         </div>
 
-        {isLoading ? (
-          <div className="text-center py-8">
-            <p>Loading services...</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={service.id} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
-                  <div className="mb-6">
-                    {getServiceIcon(index)}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 font-handwritten">{service.name}</h3>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
-                  <div className="mb-6">
-                    <span className="text-2xl font-bold text-purple-600">${service.price}</span>
-                  </div>
-                  <div className="mb-8">
-                    <p className="text-gray-600 text-sm">
-                      ✓ {service.duration_hours} hour turnaround
-                    </p>
-                    <p className="text-gray-600 text-sm">
-                      ✓ Professional service
-                    </p>
-                    <p className="text-gray-600 text-sm">
-                      ✓ Quality guarantee
-                    </p>
-                  </div>
-                  <Button 
-                    className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white"
-                    onClick={() => handleBookService(service)}
-                  >
-                    Book Now
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        )}
+        {/* Mobile: 2 columns, Desktop: 3 columns */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <Card key={index} className="border-2 border-purple-100 hover:border-purple-300 transition-all duration-300 hover:shadow-lg group">
+              <CardContent className="p-4 text-center">
+                <div className="text-4xl mb-3">{service.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 font-handwritten">{service.title}</h3>
+                <p className="text-sm text-gray-600 mb-2 font-handwritten">{service.description}</p>
+                {/* <p className="text-xs text-gray-500 font-handwritten">{service.detail}</p> */}
+                <Button 
+                  size="sm" 
+                  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white mt-2 font-handwritten"
+                >
+                  Book Service
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
         <div className="text-center mt-12">
           <Button 
