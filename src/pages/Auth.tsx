@@ -18,7 +18,14 @@ const Auth = () => {
 
   useEffect(() => {
     if (user) {
-      window.location.href = '/';
+      // Check for intended destination
+      const intendedDestination = sessionStorage.getItem('intendedDestination');
+      if (intendedDestination) {
+        sessionStorage.removeItem('intendedDestination');
+        window.location.href = intendedDestination;
+      } else {
+        window.location.href = '/';
+      }
     }
   }, [user]);
 
@@ -46,7 +53,15 @@ const Auth = () => {
           title: "Welcome back!",
           description: "You have successfully signed in.",
         });
-        window.location.href = '/';
+        
+        // Check for intended destination
+        const intendedDestination = sessionStorage.getItem('intendedDestination');
+        if (intendedDestination) {
+          sessionStorage.removeItem('intendedDestination');
+          window.location.href = intendedDestination;
+        } else {
+          window.location.href = '/';
+        }
       }
     } catch (error: any) {
       toast({

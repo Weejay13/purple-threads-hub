@@ -44,6 +44,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (!user) {
+      sessionStorage.setItem('intendedDestination', '/profile');
       window.location.href = '/auth';
       return;
     }

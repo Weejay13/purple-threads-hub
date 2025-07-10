@@ -31,6 +31,8 @@ const BookService = () => {
 
   useEffect(() => {
     if (!user) {
+      // Store intended destination before redirect
+      sessionStorage.setItem('intendedDestination', '/book-service');
       window.location.href = '/auth';
       return;
     }

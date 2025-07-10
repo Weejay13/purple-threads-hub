@@ -23,6 +23,7 @@ const MyPoints = () => {
 
   useEffect(() => {
     if (!user) {
+      sessionStorage.setItem('intendedDestination', '/my-points');
       window.location.href = '/auth';
       return;
     }

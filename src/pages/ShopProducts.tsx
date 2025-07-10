@@ -34,6 +34,7 @@ const ShopProducts = () => {
 
   useEffect(() => {
     if (!user) {
+      sessionStorage.setItem('intendedDestination', '/shop-products');
       window.location.href = '/auth';
       return;
     }
