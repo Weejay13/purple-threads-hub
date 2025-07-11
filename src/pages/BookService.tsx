@@ -30,14 +30,8 @@ const BookService = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (!user) {
-      // Store intended destination before redirect
-      sessionStorage.setItem('intendedDestination', '/book-service');
-      window.location.href = '/auth';
-      return;
-    }
     fetchServices();
-  }, [user]);
+  }, []);
 
   const fetchServices = async () => {
     try {
@@ -102,7 +96,7 @@ const BookService = () => {
     }
   };
 
-  if (!user) return null;
+  
 
   return (
     <div className="lg:pl-64 pb-20 lg:pb-0">

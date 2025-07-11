@@ -43,13 +43,10 @@ const Profile = () => {
   const [memberSince, setMemberSince] = useState('');
 
   useEffect(() => {
-    if (!user) {
-      sessionStorage.setItem('intendedDestination', '/profile');
-      window.location.href = '/auth';
-      return;
+    if (user) {
+      fetchProfile();
+      fetchStats();
     }
-    fetchProfile();
-    fetchStats();
   }, [user]);
 
   const fetchProfile = async () => {
@@ -128,7 +125,7 @@ const Profile = () => {
     setProfile(prev => ({ ...prev, [field]: value }));
   };
 
-  if (!user) return null;
+  
 
   return (
     <div className="lg:pl-64 pb-20 lg:pb-0">

@@ -33,13 +33,8 @@ const ShopProducts = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (!user) {
-      sessionStorage.setItem('intendedDestination', '/shop-products');
-      window.location.href = '/auth';
-      return;
-    }
     fetchProducts();
-  }, [user]);
+  }, []);
 
   const fetchProducts = async () => {
     try {
@@ -153,7 +148,7 @@ const ShopProducts = () => {
 
   const categories = [...new Set(products.map(p => p.category))].filter(Boolean);
 
-  if (!user) return null;
+  
 
   return (
     <div className="lg:pl-64 pb-20 lg:pb-0">

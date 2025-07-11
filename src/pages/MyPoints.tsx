@@ -22,13 +22,8 @@ const MyPoints = () => {
   const [recentActivity, setRecentActivity] = useState<any[]>([]);
 
   useEffect(() => {
-    if (!user) {
-      sessionStorage.setItem('intendedDestination', '/my-points');
-      window.location.href = '/auth';
-      return;
-    }
     calculatePoints();
-  }, [user]);
+  }, []);
 
   const calculatePoints = async () => {
     try {
@@ -152,7 +147,7 @@ const MyPoints = () => {
     }
   };
 
-  if (!user) return null;
+  
 
   return (
     <div className="lg:pl-64 pb-20 lg:pb-0">
