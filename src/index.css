@@ -15,16 +15,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 261 83% 58%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 270 95% 75%;
+    --secondary-foreground: 240 5.9% 10%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 330 81% 60%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -35,6 +35,18 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+    
+    /* Luxury gradient colors */
+    --gradient-luxury-start: 261 83% 58%;
+    --gradient-luxury-middle: 330 81% 60%;
+    --gradient-luxury-end: 45 100% 70%;
+    --luxury-gold: 45 100% 70%;
+    --luxury-purple: 261 83% 58%;
+    --luxury-pink: 330 81% 60%;
+    
+    /* Shadows */
+    --shadow-luxury: 0 25px 50px -12px hsl(261 83% 58% / 0.25);
+    --shadow-glow: 0 0 60px hsl(261 83% 58% / 0.3);
 
     --sidebar-background: 0 0% 98%;
 
